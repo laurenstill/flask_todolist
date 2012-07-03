@@ -1,0 +1,14 @@
+<html>
+    <body>
+        <h1>To Do List</h1>
+        <p>
+            <b><em style= "color: blue">These are your tasks to be completed:</b></em>
+                    {% for task in tasks %}
+                   <i> <li><input type="checkbox"/> {{task.title}}</li></i>
+                    {% endfor %}
+
+        </p>
+
+    </body>
+</html>
+
