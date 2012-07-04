@@ -18,13 +18,28 @@ def save_task():
 	new_task = Task(request.form['title'])
 	model.add(new_task)
 	model.save_all()
-	return "Saved this task"
+	return redirect(url_for("home"))
 
 
-@app.route("/edit/<int:task_id>")
+@app.route("/edit/<int:task_id>", methods = ["GET"])
 def edit_task(task_id):
+	edit_task = Task.query.get(task_id)
+	return render_template("edit_tasks.html", task=edit_task)
+
+@app.route("/finished_tasks", methods = ["GET"])
+def finished_task():
+	return render_template("edit_tasks.html")
+
+@app.route("/finished_tasks/<int:task_id>", methods=["POST"])
+def save_finished_task(task_id):
 	task = Task.query.get(task_id)
-	return "You entered %d in your url, %s"%(task_id, task)
+	if request.form.get("done"):
+		task.complete()
+	# new_task = Task.complete(finished_task())
+	# model.add(new_task)
+	model.save_all()
+	return redirect(url_for("home"))
+
 
 # @app.route("/completed", methods=["POST"])
 # def completed_task():

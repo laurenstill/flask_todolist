@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <h1>Task {{task.id}}</h1>
+        <p>
+            <b><em style= "color: blue">Here is your task, edit it:</b></em>
+            		<br><br>  
+                 {{task.title}}<br>
+                 {{task.notes}}<br>
+                 <form action="{{ url_for("save_finished_task", task_id=task.id) }}" method="post">
+					Done: <input name="done" type="checkbox" value="Done"><br>
+<!--					Not Done: <input name="doneness" type="radio" value="Not Done"> -->
+					<br>
+					<input type = "submit"> are you sure this is done?
+				</form>
+                   
+
+        </p>
+
+    </body>
+</html>
