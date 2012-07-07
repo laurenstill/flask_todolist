@@ -1,19 +1,81 @@
 <html>
-    <body>
-        <h1>Task {{task.id}}</h1>
-        <p>
-            <b><em style= "color: blue">Here is your task, edit it:</b></em>
-            		<br><br>  
-                 {{task.title}}<br>
-                 {{task.notes}}<br>
-                 <form action="{{ url_for("save_finished_task", task_id=task.id) }}" method="post">
-					Done: <input name="done" type="checkbox" value="Done"><br>
-<!--					Not Done: <input name="doneness" type="radio" value="Not Done"> -->
-					<br>
-					<input type = "submit"> are you sure this is done?
-				</form>
-                   
+    <style>
+    h1{
+            width: 100%;
+            height:50 px;
+            background-color:#544E4F;
+            text-align: center;
+            border-radius:25px;
+            padding: 8 px;
+            font-family:helvetica, verdana, sans-serif;
+            font size:24 px;
+            color:#9999CC ;
 
+        }
+        h3{
+            text-align: center;
+            font-family:helvetica, verdana, sans-serif;
+            text-align: center;
+            border-radius:25px;
+            font size: 16 px;
+            color:#544E4F;
+            min-height: 50 px;
+            min-width: 150 px;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+        div{
+            font-family:helvetica,verdana;
+            text-align: center;
+            
+        }
+
+        div.checkboxes {
+            margin-top: 25px;
+        }
+
+        input.invisible {
+            display: none;
+        }
+   
+    p.task-title {
+        border: 1px solid red;
+    }
+
+    p.task-notes {
+        border: 1px solid green;
+    }
+    </style>
+    <body>
+        <h1>Task: {{task.id}}</h1>
+        <p>
+            <h3>This is your current task:</h3>
+            <div>
+                <p class="task-title">
+                    {{task.title}}
+                </p>
+                <p class="task-notes">
+                    {{task.notes}}
+                </p>
+            </div>
+            <h3>Edit task below:</h3>
+            <div class="form">
+                <form action="{{ url_for("save_finished_task", task_id=task.id) }}" method="post">
+        
+                    <div class = "task">
+                    Task: <input type="text" name="title" value="{{task.title}}">
+                    </div>
+                    <div class = "notes">
+                    Notes: <input type="text" name="notes" value="{{task.notes}}">
+                    </div>
+                    <div class="checkboxes">
+                        Done: <input name="done" type="checkbox" value="Done">
+                        <!-- Edit: <input name="update" type="checkbox" value="update"> -->
+                        <input type = "submit"> Are you sure this is done?
+                    </div>
+                </form>
+            </div>
         </p>
 
     </body>

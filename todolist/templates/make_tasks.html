@@ -1,12 +1,52 @@
 <html>
-	<body>
-		<h1>Please enter your next task</h1>
-		<form action="/add" method="post">
-			Task: <input type="text" name="title">
-			<br>
-			Notes: <input type="text" name="notes">
-			<br>
-			<input type = "submit">
-		</form>
+    <body>
+    	<style>
+    	h1{
+    		width: 100%;
+    		height:50 px;
+    		background-color:#544E4F;
+    		text-align: center;
+            border-radius:25px;
+    		padding: 8 px;
+    		font-family:helvetica, verdana, sans-serif;
+    		font size:24 px;
+    		color:#9999CC ;
+
+    	}
+
+    	div{
+            font-family:helvetica,verdana;
+            text-align: center;
+            
+        }
+    	div.main{
+    		text-align: center;
+    		font-family:helvetica, verdana, sans-serif;
+    		text-align: center;
+            border-radius:25px;
+    		font size: 16 px;
+    		color:#544E4F;
+            min-height: 450 px;
+            margin-left: auto;
+            margin-right: auto;
+
+    	}
+    	div.forme{
+    	}
+    	</style>
+			<h1>Please enter your next task</h1>
+			<div class="form">
+				<div class = "formentry">
+				<form action="{{url_for("save_task")}}" method="post">
+					<div class = "task">
+					Task: <input type="text" name="title">
+					</div>
+					<div class = "notes">
+					Notes: <input type="text" name="notes">
+					</div>
+					<input type = "submit">
+				</form>
+				</div>
+			</div>
 	</body/>
 </html>		

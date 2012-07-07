@@ -4,52 +4,80 @@
     	h1{
     		width: 100%;
     		height:50 px;
-    		background-color:#9999CC;
+    		background-color:#544E4F;
     		text-align: center;
+            border-radius:25px;
     		padding: 8 px;
     		font-family:helvetica, verdana, sans-serif;
     		font size:24 px;
-    		color:#3300cc ;
+    		color:#9999CC ;
 
     	}
-    	b{
+    	div.main{
     		text-align: center;
     		font-family:helvetica, verdana, sans-serif;
     		text-align: center;
-    		display: block;
+            border-radius:25px;
     		font size: 16 px;
     		color:#544E4F;
-    		
+            min-height: 450 px;
+            margin-left: auto;
+            margin-right: auto;
+
     	}
+        div.footer{
+            text-align: center;
+            font-family:helvetica, verdana, sans-serif;
+            text-align: center;
+            width: 10%;
+            border-radius:25px;
+            display: block;
+            font size: 16 px;
+            color:#9999CC;
+            min-height: 75 px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 75px;
+
+        }
     	a{
     		font-family:helvetica,verdana;
     		text-align: center;
     		text-decoration:none;
     		display: block;
+            border-radius:25px;
     		width: 150 px;
     		height: 30 px ;
+            margin-left: auto;
+            margin-right: auto;
     		border: 2 px solid #9999CC;
     		background-color: #9999CC;
     		padding: 10 px;
     		border-color:#9999CC;
     		color:#544E4F;
-    	a hover{
-    		background color: #6666CC;
+            
     	}	
-
+        a:hover {
+            background-color: #6666CC;
+        
     	}
     	</style>
         <h1>To Do List</h1>
         <p>
-            <b>These are your tasks to be completed:</b>
-                    {% for task in tasks %}
-                    {% if not task.done %}
-                    <ul><a href="{{url_for("edit_task",task_id = task.id)}}">{{task.title}}</a></ul>
-                    {% endif %}
-                    {% endfor %} <br><br><br>
+            <div class = main>
+                <b>These are your tasks to be completed:</b>
+                        {% for task in tasks %}
+                        {% if not task.done %}
+                        <ul>
+                            <a href="{{url_for("edit_task",task_id = task.id)}}",hover color="#FF00FF">{{task.title}}</a>
+                        </ul>
+                        {% endif %}
+                        {% endfor %} <br><br><br>
+            </div>
         </p>
-        <a href="{{url_for("make_task")}}"shape = "circle", background-color="#00000", >Add a task!</a>
-
+        <div class=footer>
+            <a href="{{url_for("make_task")}}"shape = "circle", background-color="#00000", >Add a task!</a>
+        </div>
     </body>
 </html>
 
